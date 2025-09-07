@@ -3,8 +3,8 @@ services:
     name: ecommerce-backend
     env: python
     buildCommand: |
-      python -m pip install --upgrade pip
-      pip install -e .
+      python -m pip install --upgrade pip setuptools wheel
+      pip install -e . --no-cache-dir
       alembic upgrade head
     startCommand: gunicorn -k uvicorn.workers.UvicornWorker -w 4 -t 120 main:app
     envVars:
