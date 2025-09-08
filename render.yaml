@@ -10,6 +10,8 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.16
+      - key: PYTHONPATH
+        value: /opt/render/project/src
       - key: DATABASE_URL
         fromDatabase:
           name: ecommerce-db
@@ -19,7 +21,7 @@ services:
       - key: ENVIRONMENT
         value: production
       - key: CORS_ORIGINS
-        value: shopeasyfrontend.netlify.app
+        value: https://ecommerce-frontend.vercel.app
       - key: PIP_NO_CACHE_DIR
         value: 'true'
 
