@@ -2,12 +2,11 @@ services:
   - type: web
     name: ecommerce-backend
     env: python
-    rootDir: backend
     buildCommand: |
       python -m pip install --upgrade pip setuptools wheel
-      pip install -r requirements.txt
-      alembic upgrade head
-    startCommand: gunicorn -k uvicorn.workers.UvicornWorker -w 4 -t 120 main:app
+      pip install -r backend/requirements.txt
+      cd backend && alembic upgrade head
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker -w 4 -t 120 backend.main:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.16

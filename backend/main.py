@@ -14,13 +14,13 @@ import logging
 from pathlib import Path
 import os
 
-from .database import get_db, create_tables, User, Item, Cart, CartItem
-from .schemas import (
+from backend.database import get_db, create_tables, User, Item, Cart, CartItem
+from backend.schemas import (
     UserCreate, UserLogin, User as UserSchema, Token,
     ItemCreate, Item as ItemSchema,
     CartItemCreate, CartItemUpdate, Cart as CartSchema
 )
-from .auth import (
+from backend.auth import (
     authenticate_user, create_access_token, get_current_user,
     get_password_hash, ACCESS_TOKEN_EXPIRE_MINUTES
 )
@@ -95,7 +95,7 @@ async def add_process_time_header(request: Request, call_next):
     return response
 
 # Import database URL from database.py
-from .database import DATABASE_URL
+from backend.database import DATABASE_URL
 
 # Create tables on startup
 @app.on_event("startup")
