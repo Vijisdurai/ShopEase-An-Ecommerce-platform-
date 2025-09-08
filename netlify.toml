@@ -1,0 +1,21 @@
+[build]
+  publish = "frontend"
+  command = "echo 'No build step required'"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  command = "python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000"
+  port = 8000
+  publish = "frontend"
